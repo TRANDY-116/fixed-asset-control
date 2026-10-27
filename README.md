@@ -1,11 +1,13 @@
 # Fixed Asset Control
 
-Power BI fixed-asset control model for register, depreciation, GL reconciliation, exceptions, physical verification, and CAPEX analysis.
+Power BI fixed-asset control model for a fictional **Demo Bank Cameroun**. The project covers register depreciation, GL reconciliation, exceptions, physical verification, and CAPEX analysis.
+
+All data is fictional and created for demonstration and interview purposes. It does not come from a real bank or client.
 
 ## Project Files
 
 - [Power BI report](Fixed%20Assets%20Register.pbix): report and semantic model
-- [Answer workbook](FA_Control_Model_backup.xlsx): reference calculations and validation figures
+- [Source workbook](FA_Control_Model_backup.xlsx): fictional source data used to build the model
 
 ## Model View
 
@@ -32,16 +34,40 @@ Core model areas:
 - `dimBranches`: branch dimension
 - `DAX Measures`: report measures and dynamic commentary
 
+## Source Workbook
+
+The source workbook contains:
+
+- `Asset_Register`: 206 assets across eight categories, acquired from 2018 to 2025, including 11 disposals
+- `GL_Opening` and `GL_Transactions`: opening balances and 282 balanced FY2025 journal lines
+- `CAPEX_Budget`: quarterly budget by category; actuals are derived from the asset register
+- `Physical_Count`: 192 physical-count results from January 2026
+- `Assumptions`: capitalisation threshold, useful lives, and depreciation conventions
+- `GL_Chart`: chart of accounts and category mappings
+- `BranchesLookup`: branch lookup values
+
+The workbook is the build input. A separate answer-key workbook is used only to check the completed analysis and is not the source of the model.
+
+## Analysis Workflow
+
+1. Calculate depreciation per asset and per month, then calculate NBV at 31 December 2025.
+2. Reconcile register cost and accumulated depreciation to the GL by category.
+3. Explain each difference through the exception and physical-verification analysis.
+4. Build the dashboard and compare the results with the separate answer key.
+
 ## Reconciliation Rules
 
 - Cost and accumulated depreciation differences are calculated as GL minus register.
-- Differences within plus or minus 10 XAF are classified as `Reconciled`.
+- Depreciation starts in the month of acquisition and stops in the month before disposal.
+- Differences within plus or minus 10 XAF are classified as `Reconciled` in the current model; the source exercise notes that differences below 150 XAF are rounding differences.
 - Larger differences are classified as `Investigate`.
 - The duplicate register row `FA-0206` is excluded from physical `Not Counted` KPIs but remains in the register for control analysis.
 
+Register and GL differences can have different causes. A category mismatch can move cost between categories without changing the overall total, while missing postings, duplicates, disposals, or depreciation errors affect one side of the reconciliation.
+
 ## Validated Figures
 
-The model aligns with the answer workbook for the following results:
+The completed model currently produces the following validation results:
 
 | Metric | Value |
 | --- | ---: |
@@ -98,7 +124,7 @@ Measures are stored in the `DAX Measures` table, including:
 
 The report cutoff is **31 December 2025**.
 
-The answer workbook is used to validate the Power BI measures and reconciliation results.
+These figures should be checked against the separate answer-key workbook after the source analysis is complete.
 
 ## Model Screenshot Workflow
 
