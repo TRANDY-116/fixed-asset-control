@@ -84,7 +84,7 @@ The source workbook contains:
 - `GL_Chart`: chart of accounts and category mappings
 - `BranchesLookup`: branch lookup values
 
-The workbook is the build input. A separate answer-key workbook is used only to check the completed analysis and is not the source of the model.
+The workbook is the build input. A separate answer-key workbook is used only to check the completed analysis and is intentionally not included in the repository.
 
 ## Analysis Workflow
 
@@ -164,17 +164,10 @@ The report cutoff is **31 December 2025**.
 
 These figures should be checked against the separate answer-key workbook after the source analysis is complete.
 
-## Model Screenshot Workflow
+## Reproducing the Report
 
-1. Open the PBIX file in Power BI Desktop.
-2. Select **Model view**.
-3. Arrange the core tables so their relationships are readable.
-4. Capture the view with `Windows + Shift + S`.
-5. Save the screenshots as `docs/model-1.png`, `docs/model-2.png`, and `docs/model-3.png`.
-6. Commit the README and images:
-
-```powershell
-git add README.md docs/model-1.png docs/model-2.png docs/model-3.png
-git commit -m "Document Power BI model"
-git push origin main
-```
+1. Open `Fixed Assets Register.pbix` in Power BI Desktop.
+2. Keep `FA_Control_Model_backup.xlsx` in the same project folder or update the workbook source path if prompted.
+3. Refresh the model to recalculate the Power Query tables and DAX measures.
+4. Confirm the report cutoff is **31 December 2025**.
+5. Use the dashboard screenshots and validated figures above as a guide when checking the refreshed report.
