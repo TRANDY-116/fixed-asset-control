@@ -19,6 +19,44 @@ The Power BI model is documented across three screenshots:
 
 ![Power BI model 3](docs/model-3.png)
 
+## Dashboard Pages
+
+### Overview
+
+![Overview dashboard](docs/Overview.png)
+
+The overview combines the main register, depreciation, CAPEX, exception, and reconciliation signals. It shows register cost of **2.904bn XAF**, accumulated depreciation of **868.44m XAF**, net book value of **2.035bn XAF**, CAPEX actuals of **280.23m XAF**, and **36 open exceptions**.
+
+### Register and Depreciation
+
+![Register and Depreciation dashboard](docs/Register%20and%20Depreciation.png)
+
+This page analyses the **196 active assets** by category, acquisition year, and branch. It also highlights assets nearing the end of their useful lives and disposals recorded during FY2025.
+
+### Reconciliation
+
+![Reconciliation dashboard](docs/Reconciliation.png)
+
+This page compares register and GL balances by category. Five of eight categories are reconciled, the absolute cost difference is **12.54m XAF**, and the accumulated depreciation difference is **3.03m XAF**. The lower table lists the specific reconciling items requiring investigation.
+
+### Exceptions
+
+![Exceptions dashboard](docs/Exceptions.png)
+
+The exceptions page presents **36 exception records**, all currently open, with approximately **96.90m XAF** in signed exception amounts and **four policy breaches**. Users can analyse exceptions by type, category, status, and asset.
+
+### Physical Verification
+
+![Physical Verification dashboard](docs/Physical%20Verification.png)
+
+This page compares the register with the physical count: **196 expected assets**, **188 counted**, **8 not counted**, **6 found at another branch**, **5 unregistered items**, and **4 damaged items**.
+
+### CAPEX vs Budget
+
+![CAPEX vs Budget dashboard](docs/CAPEX%20vs%20Budget.png)
+
+The CAPEX page compares the **377.30m XAF budget** with **280.23m XAF actual spend**, producing a **97.07m XAF underspend** or **25.73% below budget**. Category variances, quarterly performance, and large-variance commentary are shown together.
+
 Core model areas:
 
 - `qAsset_Register`: asset register, depreciation, NBV, and disposal calculations
